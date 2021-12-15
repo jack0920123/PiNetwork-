@@ -1,6 +1,8 @@
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 import time
+import json
+CONFIG = json.load(open("config.json",'r',encoding="utf-8"))
 
 #建立連線
 caps = {}
@@ -35,7 +37,7 @@ time.sleep(5)
 #輸入手機號
 el6 = driver.find_element_by_xpath(
     "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.widget.ScrollView/android.view.View/android.view.View[3]/android.widget.EditText")
-el6.send_keys("933247900")
+el6.send_keys(CONFIG["data"]["cellphone"])
 time.sleep(5)
 #送出
 el7 = driver.find_element_by_xpath(
@@ -45,24 +47,11 @@ driver.implicitly_wait(30)
 #輸入密碼
 e18 = driver.find_element_by_xpath('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText')
 
-password = '@Cheere82113'
+password = CONFIG["data"]["password"]
 e18.send_keys(password)
-# driver.press_keycode(77)
-# driver.press_keycode(31,64,59)
-# driver.press_keycode(36)
-# driver.press_keycode(32)
-# driver.press_keycode(32)
-# driver.press_keycode(46)
-# driver.press_keycode(32)
-# driver.press_keycode(15)
-# driver.press_keycode(9)
-# driver.press_keycode(8)
-# driver.press_keycode(8)
-# driver.press_keycode(10)
 
 
-# el8 = driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText")
-# el8.send_keys("@Cheere82113")
+
 driver.implicitly_wait(5)
 #送出
 el9 =  driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.widget.Button")
